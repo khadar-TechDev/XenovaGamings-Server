@@ -1,0 +1,6 @@
+@XenovaGamings_Server_HostAddress = http://localhost:5068
+
+GET {{XenovaGamings_Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
