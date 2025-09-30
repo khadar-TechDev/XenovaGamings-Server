@@ -9,7 +9,7 @@ namespace XenovaGamings_Server.Controllers
         [HttpGet(Name = "ApiPing")]
         public string GetApiPing()
         {
-            return "API ping success";
+            return "Khadar Testing API Ping.";
         }
     }
 }
