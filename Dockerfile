@@ -9,17 +9,17 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
 # Copy csproj files first (restore caching)
-COPY ../XenovaGamings-Repo/XenovaGamings-Repo.csproj XenovaGamings-Repo/
-COPY ../XenovaGamings-Service/XenovaGamings-Service.csproj XenovaGamings-Service/
-COPY XenovaGamings-Server.csproj XenovaGamings-Server/
+COPY XenovaGamings-Repo/XenovaGamings-Repo.csproj XenovaGamings-Repo/
+COPY XenovaGamings-Service/XenovaGamings-Service.csproj XenovaGamings-Service/
+COPY XenovaGamings-Server/XenovaGamings-Server.csproj XenovaGamings-Server/
 
 # Restore dependencies
 RUN dotnet restore XenovaGamings-Server/XenovaGamings-Server.csproj
 
 # Copy all source code
-COPY ../XenovaGamings-Repo/ XenovaGamings-Repo/
-COPY ../XenovaGamings-Service/ XenovaGamings-Service/
-COPY . XenovaGamings-Server/
+COPY XenovaGamings-Repo/ XenovaGamings-Repo/
+COPY XenovaGamings-Service/ XenovaGamings-Service/
+COPY XenovaGamings-Server/ XenovaGamings-Server/
 
 # Build
 WORKDIR /src/XenovaGamings-Server
