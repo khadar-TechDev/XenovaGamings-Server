@@ -1,8 +1,6 @@
-# Base image: ASP.NET Core runtime
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+# Base image: .NET runtime for console apps
+FROM mcr.microsoft.com/dotnet/runtime:8.0 AS base
 WORKDIR /app
-EXPOSE 80
-EXPOSE 443
 
 # Build stage
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
@@ -11,16 +9,14 @@ WORKDIR /src
 # Copy csproj files first for restore caching
 COPY XenovaGamings-Repo/XenovaGamings-Repo.csproj XenovaGamings-Repo/
 COPY XenovaGamings-Service/XenovaGamings-Service.csproj XenovaGamings-Service/
-COPY XenovaGamings-Server/XenovaGamings-Server.csproj XenovaGamings-Server/
 
-RUN dotnet restore XenovaGamings-Server/XenovaGamings-Server.csproj
+RUN dotnet restore XenovaGamings-Service/XenovaGamings-Service.csproj
 
-# Copy all source code
+# Copy all source
 COPY XenovaGamings-Repo/ XenovaGamings-Repo/
 COPY XenovaGamings-Service/ XenovaGamings-Service/
-COPY XenovaGamings-Server/ XenovaGamings-Server/
 
-WORKDIR /src/XenovaGamings-Server
+WORKDIR /src/XenovaGamings-Service
 RUN dotnet build -c Release -o /app/build
 
 # Publish stage
@@ -31,4 +27,4 @@ RUN dotnet publish -c Release -o /app/publish /p:UseAppHost=false
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "XenovaGamings-Server.dll"]
+ENTRYPOINT ["dotnet", "XenovaGamings-Service.dll"]

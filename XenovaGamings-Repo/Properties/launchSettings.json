@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "XenovaGamings-Repo": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}

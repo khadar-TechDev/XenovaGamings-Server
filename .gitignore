@@ -1,8 +1,63 @@
-﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
-################################################################################
+﻿###########################
+# General Visual Studio and .NET Core Ignored Files
+###########################
 
-/.vs
-/XenovaGamings-Server/bin/Debug/net8.0
-/XenovaGamings-Server/XenovaGamings-Server.csproj.user
-/XenovaGamings-Server/obj/Debug/net8.0
+# Build results
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+# Exclude build output from all projects
+**/[Bb]in/
+**/[Oo]bj/
+
+# VS Code directory (if used)
+.vscode/
+
+# Package results
+*.nupkg
+*.snupkg
+*.dll
+*.pdb
+*.exe
+
+# User-specific files
+*.user
+*.suo
+*.sln.docstates
+*.vshost.*
+.vs/
+!/.vs/
+!/.vs/**/
+!/.vs/**/
+!/.vs/ProjectSettings.json
+!/.vs/ProjectEvaluation.json
+
+# Tooling
+.dotnet/
+.tool-cache/
+
+# Entity Framework Core Migrations (Optional - if you want to exclude snapshots)
+# **/*.ModelSnapshot.cs 
+
+# Project specific files
+# These files often contain local paths or machine-specific settings and should be ignored
+# if they are not meant to be shared across all developers.
+*.csproj.user
+*.vbproj.user
+*.resharper
+*.dotsettings
+
+# Application secrets and configuration
+# Local config that should NOT be committed
+appsettings.Development.json
+appsettings.Local.json
+*.localsettings
+
+# Test Results
+TestResults/
+*.trx
+*.html
+
+# Miscellaneous
+[Tt]humbs.db
